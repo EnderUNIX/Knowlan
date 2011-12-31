@@ -1,0 +1,23 @@
+-----------------------------------------------------
+        EnderUnix Knowlan - 0.1
+    Halil Demirezen <halil@enderunix.org
+-----------------------------------------------------
+
+Depending on being initial, knowlan can easily be 
+installed. First of all,
+
+
+   ./configure
+
+
+Then,
+
+   make, make install
+
+so knowlan is at your service.
+
+Not to get boring errors, check your libpcap-dev and 
+libnet-dev to be installed correctly.
+
+
+

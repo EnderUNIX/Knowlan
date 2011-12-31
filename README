@@ -1,0 +1,43 @@
+-----------------------------------------------------
+	EnderUnix Knowlan - 0.1
+    Halil Demirezen <halil@enderunix.org
+-----------------------------------------------------
+
+
+Knowlan is ARP protocol based Local Area Network IP and
+MAC Adress Extractor. Knowlan uses libpcap and libnet
+libraries for to be simple to handle and to have a simple
+code for any interestor to deal with the code. Pre-Stable
+Versions of Knowlan did not use libpcap and libnet 
+libraries. It used pure link layer system calls to get
+settings and generate ARP PACKETs for sending and handling.
+
+However, everything is not so simple. For portability,
+It has been found more efficient that if we use a well
+known and portable library, we can solve portability problem.
+So, It is decided on to use libpcap and libnet libraries 
+for sending and handling ARP packets and decide on them
+what to do.
+
+As you have already dealt with the program, It has two processess.
+One, child enters in a infinite loop for recieving ARP
+REPLY packets and then printing IP and MAC Addresses as it 
+gets packet from the interface. The second process, our parent,
+get a number of maximum possible host in the LAN using netmask.
+So, then, it starts sending ARP REQUEST packets to the whole
+LAN, every ip, not knowing whether the ip address it sends
+the ARP REQUEST packet is up or not.
+
+Arter sending packets to whole LAN, it waits an extra 100msecs. 
+for any late host to answer ARP REQUEST. So, after 100msecs 
+passed, the send_arp_packet(interface) returns and that process
+then sends SIGKILL to the child to inform that there will 
+be no other machine to reply. So the child quits. The IP and
+MAC addresses associated with them are all active machines
+on the LAN. Have fun with them!
+
+For installation please READ INSTALL.
+
+ 
+
+
